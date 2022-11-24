@@ -10,11 +10,13 @@
 		11061BDAE20E1A04CBF25FD8 /* Pods_NYTimesTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696FB33A8F1E64D12E13B754 /* Pods_NYTimesTest.framework */; };
 		40C859B0292FC405006A1AB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859AF292FC405006A1AB2 /* AppDelegate.swift */; };
 		40C859B2292FC405006A1AB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859B1292FC405006A1AB2 /* SceneDelegate.swift */; };
-		40C859B4292FC405006A1AB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859B3292FC405006A1AB2 /* ViewController.swift */; };
-		40C859B7292FC405006A1AB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C859B5292FC405006A1AB2 /* Main.storyboard */; };
 		40C859BA292FC405006A1AB2 /* NYTimesTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40C859B8292FC405006A1AB2 /* NYTimesTest.xcdatamodeld */; };
 		40C859BC292FC409006A1AB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40C859BB292FC409006A1AB2 /* Assets.xcassets */; };
 		40C859BF292FC409006A1AB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C859BD292FC409006A1AB2 /* LaunchScreen.storyboard */; };
+		40C859C9292FC797006A1AB2 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859C8292FC797006A1AB2 /* MainScreenViewController.swift */; };
+		40C859CB292FC7BA006A1AB2 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859CA292FC7BA006A1AB2 /* MainScreenViewModel.swift */; };
+		40C859CE292FCA00006A1AB2 /* UserConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859CD292FCA00006A1AB2 /* UserConstants.swift */; };
+		40C859D0292FCC87006A1AB2 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859CF292FCC87006A1AB2 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +24,14 @@
 		40C859AC292FC405006A1AB2 /* NYTimesTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTimesTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C859AF292FC405006A1AB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C859B1292FC405006A1AB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		40C859B3292FC405006A1AB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		40C859B6292FC405006A1AB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		40C859B9292FC405006A1AB2 /* NYTimesTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NYTimesTest.xcdatamodel; sourceTree = "<group>"; };
 		40C859BB292FC409006A1AB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40C859BE292FC409006A1AB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40C859C0292FC409006A1AB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40C859C8292FC797006A1AB2 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		40C859CA292FC7BA006A1AB2 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
+		40C859CD292FCA00006A1AB2 /* UserConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConstants.swift; sourceTree = "<group>"; };
+		40C859CF292FCC87006A1AB2 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		696FB33A8F1E64D12E13B754 /* Pods_NYTimesTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NYTimesTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		714BB472B1E5E6CC8FC6F139 /* Pods-NYTimesTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesTest.debug.xcconfig"; path = "Target Support Files/Pods-NYTimesTest/Pods-NYTimesTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,8 +71,9 @@
 			children = (
 				40C859AF292FC405006A1AB2 /* AppDelegate.swift */,
 				40C859B1292FC405006A1AB2 /* SceneDelegate.swift */,
-				40C859B3292FC405006A1AB2 /* ViewController.swift */,
-				40C859B5292FC405006A1AB2 /* Main.storyboard */,
+				40C859CF292FCC87006A1AB2 /* MainCoordinator.swift */,
+				40C859C6292FC75A006A1AB2 /* Screens */,
+				40C859CC292FC9E9006A1AB2 /* Resources */,
 				40C859BB292FC409006A1AB2 /* Assets.xcassets */,
 				40C859BD292FC409006A1AB2 /* LaunchScreen.storyboard */,
 				40C859C0292FC409006A1AB2 /* Info.plist */,
@@ -77,13 +82,37 @@
 			path = NYTimesTest;
 			sourceTree = "<group>";
 		};
+		40C859C6292FC75A006A1AB2 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				40C859C7292FC76F006A1AB2 /* MainScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		40C859C7292FC76F006A1AB2 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				40C859C8292FC797006A1AB2 /* MainScreenViewController.swift */,
+				40C859CA292FC7BA006A1AB2 /* MainScreenViewModel.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		40C859CC292FC9E9006A1AB2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				40C859CD292FCA00006A1AB2 /* UserConstants.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		92FA651DC8785AFC74EF66F5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				714BB472B1E5E6CC8FC6F139 /* Pods-NYTimesTest.debug.xcconfig */,
 				07D1F2E9CE08445BFBABCB95 /* Pods-NYTimesTest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -157,7 +186,6 @@
 			files = (
 				40C859BF292FC409006A1AB2 /* LaunchScreen.storyboard in Resources */,
 				40C859BC292FC409006A1AB2 /* Assets.xcassets in Resources */,
-				40C859B7292FC405006A1AB2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,24 +238,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40C859B4292FC405006A1AB2 /* ViewController.swift in Sources */,
+				40C859C9292FC797006A1AB2 /* MainScreenViewController.swift in Sources */,
+				40C859D0292FCC87006A1AB2 /* MainCoordinator.swift in Sources */,
 				40C859BA292FC405006A1AB2 /* NYTimesTest.xcdatamodeld in Sources */,
+				40C859CE292FCA00006A1AB2 /* UserConstants.swift in Sources */,
 				40C859B0292FC405006A1AB2 /* AppDelegate.swift in Sources */,
 				40C859B2292FC405006A1AB2 /* SceneDelegate.swift in Sources */,
+				40C859CB292FC7BA006A1AB2 /* MainScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		40C859B5292FC405006A1AB2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40C859B6292FC405006A1AB2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		40C859BD292FC409006A1AB2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -366,7 +389,6 @@
 				INFOPLIST_FILE = NYTimesTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14;
@@ -399,7 +421,6 @@
 				INFOPLIST_FILE = NYTimesTest/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14;
