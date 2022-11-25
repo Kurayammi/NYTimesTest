@@ -21,6 +21,10 @@ final class MainCoordinator {
         window.makeKeyAndVisible()
     }
     
+    func openSavedNewsScreen() {
+        
+    }
+    
     init(window: UIWindow) {
         self.window = window
     }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11061BDAE20E1A04CBF25FD8 /* Pods_NYTimesTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696FB33A8F1E64D12E13B754 /* Pods_NYTimesTest.framework */; };
+		4022650A29313C580014145D /* DetailsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022650929313C580014145D /* DetailsScreenViewController.swift */; };
 		40C859B0292FC405006A1AB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859AF292FC405006A1AB2 /* AppDelegate.swift */; };
 		40C859B2292FC405006A1AB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859B1292FC405006A1AB2 /* SceneDelegate.swift */; };
 		40C859BA292FC405006A1AB2 /* NYTimesTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40C859B8292FC405006A1AB2 /* NYTimesTest.xcdatamodeld */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		07D1F2E9CE08445BFBABCB95 /* Pods-NYTimesTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NYTimesTest.release.xcconfig"; path = "Target Support Files/Pods-NYTimesTest/Pods-NYTimesTest.release.xcconfig"; sourceTree = "<group>"; };
+		4022650929313C580014145D /* DetailsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsScreenViewController.swift; sourceTree = "<group>"; };
 		40C859AC292FC405006A1AB2 /* NYTimesTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTimesTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C859AF292FC405006A1AB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C859B1292FC405006A1AB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +50,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4022650829313C330014145D /* DetailsScreenVC */ = {
+			isa = PBXGroup;
+			children = (
+				4022650929313C580014145D /* DetailsScreenViewController.swift */,
+			);
+			path = DetailsScreenVC;
+			sourceTree = "<group>";
+		};
 		40C859A3292FC405006A1AB2 = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +82,7 @@
 				40C859AF292FC405006A1AB2 /* AppDelegate.swift */,
 				40C859B1292FC405006A1AB2 /* SceneDelegate.swift */,
 				40C859CF292FCC87006A1AB2 /* MainCoordinator.swift */,
-				40C859C6292FC75A006A1AB2 /* Screens */,
+				40C859C6292FC75A006A1AB2 /* ViewControlles */,
 				40C859CC292FC9E9006A1AB2 /* Resources */,
 				40C859BB292FC409006A1AB2 /* Assets.xcassets */,
 				40C859BD292FC409006A1AB2 /* LaunchScreen.storyboard */,
@@ -82,21 +92,22 @@
 			path = NYTimesTest;
 			sourceTree = "<group>";
 		};
-		40C859C6292FC75A006A1AB2 /* Screens */ = {
+		40C859C6292FC75A006A1AB2 /* ViewControlles */ = {
 			isa = PBXGroup;
 			children = (
-				40C859C7292FC76F006A1AB2 /* MainScreen */,
+				4022650829313C330014145D /* DetailsScreenVC */,
+				40C859C7292FC76F006A1AB2 /* MainScreenVC */,
 			);
-			path = Screens;
+			path = ViewControlles;
 			sourceTree = "<group>";
 		};
-		40C859C7292FC76F006A1AB2 /* MainScreen */ = {
+		40C859C7292FC76F006A1AB2 /* MainScreenVC */ = {
 			isa = PBXGroup;
 			children = (
 				40C859C8292FC797006A1AB2 /* MainScreenViewController.swift */,
 				40C859CA292FC7BA006A1AB2 /* MainScreenViewModel.swift */,
 			);
-			path = MainScreen;
+			path = MainScreenVC;
 			sourceTree = "<group>";
 		};
 		40C859CC292FC9E9006A1AB2 /* Resources */ = {
@@ -241,6 +252,7 @@
 				40C859C9292FC797006A1AB2 /* MainScreenViewController.swift in Sources */,
 				40C859D0292FCC87006A1AB2 /* MainCoordinator.swift in Sources */,
 				40C859BA292FC405006A1AB2 /* NYTimesTest.xcdatamodeld in Sources */,
+				4022650A29313C580014145D /* DetailsScreenViewController.swift in Sources */,
 				40C859CE292FCA00006A1AB2 /* UserConstants.swift in Sources */,
 				40C859B0292FC405006A1AB2 /* AppDelegate.swift in Sources */,
 				40C859B2292FC405006A1AB2 /* SceneDelegate.swift in Sources */,
