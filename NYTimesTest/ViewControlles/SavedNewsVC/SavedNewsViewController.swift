@@ -1,57 +1,27 @@
 //
-//  MainScreenViewController.swift
+//  SavedNewsViewController.swift
 //  NYTimesTest
 //
-//  Created by Kito on 11/24/22.
+//  Created by Kito on 11/26/22.
 //
 
 import UIKit
 
-final class MainScreenViewController: UIViewController {
+class SavedNewsViewController: UIViewController {
     private var newsTableView: UITableView!
-    private let vm = MainScreenViewModel()
-    private var activityView: UIActivityIndicatorView?
-    private let refresher: UIRefreshControl = {
-            let refreshControll = UIRefreshControl()
-            refreshControll.tintColor = .systemOrange
-            refreshControll.addTarget(self,
-                                      action: #selector(refresh(sender: )),
-                                      for: .valueChanged)
-            return refreshControll
-        }()
-    
-    var pushSavedArticlesScreen: (() -> Void)?
+    private let vm = SavedNewsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupNavigationBar()
-        setupTableView()
         setupCallbacks()
-        setupActivityIndicator()
-        activityView?.startAnimating()
-        vm.sendMultiplyRequest()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        vm.syncCoreDataWithCurrentNews()
-    }
-    
-    private func setupNavigationBar() {
-        self.navigationController?.view.tintColor = UIColor.orange
-        self.navigationItem.title = "News"
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Saved",
-                                                                 style: .plain,
-                                                                 target: self,
-                                                                 action: #selector(savedButtonTapped))
+        setupTableView()
+        vm.fetchFromCoreData()
     }
     
     private func setupTableView() {
         newsTableView = UITableView()
         newsTableView.delegate = self
         newsTableView.dataSource = self
-        newsTableView.refreshControl = refresher
         newsTableView.backgroundColor = .red
         newsTableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "cell")
         
@@ -63,20 +33,9 @@ final class MainScreenViewController: UIViewController {
         newsTableView.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
     }
     
-    private func setupActivityIndicator() {
-            activityView = UIActivityIndicatorView(style: .large)
-            activityView?.center = self.view.center
-            activityView?.color = .systemOrange
-            if let activityView = activityView {
-                self.view.addSubview(activityView)
-            }
-        }
-    
     private func setupCallbacks() {
         vm.onUpdate = { [weak self] in
             self?.newsTableView.reloadData()
-            self?.activityView?.stopAnimating()
-            self?.newsTableView.refreshControl?.endRefreshing()
         }
     }
     
@@ -84,17 +43,9 @@ final class MainScreenViewController: UIViewController {
         let section = button.tag
         vm.onSectionTap(section: section)
     }
-    
-    @objc private func savedButtonTapped() {
-        pushSavedArticlesScreen?()
-    }
-    
-    @objc private func refresh(sender: UIRefreshControl) {
-            vm.sendMultiplyRequest()
-        }
 }
 
-extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
+extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionsData = vm.sectionsData
         
@@ -145,3 +96,4 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
         self.present(vc, animated: true)
     }
 }
+

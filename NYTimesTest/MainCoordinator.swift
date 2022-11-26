@@ -14,7 +14,7 @@ final class MainCoordinator {
     
     func start() {
         let newsScreen = MainScreenViewController()
-        
+        newsScreen.pushSavedArticlesScreen = openSavedNewsScreen
         navigationController = UINavigationController(rootViewController: newsScreen)
         window.rootViewController = navigationController
         
@@ -22,7 +22,8 @@ final class MainCoordinator {
     }
     
     func openSavedNewsScreen() {
-        
+        let vc = SavedNewsViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     init(window: UIWindow) {

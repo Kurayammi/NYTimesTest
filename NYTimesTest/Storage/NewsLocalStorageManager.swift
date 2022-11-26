@@ -8,7 +8,7 @@
 import CoreData
 import UIKit
 
-final class ArticlesDatabaseManager {
+final class NewsLocalStorageManager {
     
     private var managedContext: NSManagedObjectContext?  {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate  else { return nil }
@@ -33,7 +33,7 @@ final class ArticlesDatabaseManager {
         article.setValue(articleToSave.published_date, forKey: "published_date")
         article.setValue(articleToSave.section, forKey: "section")
         article.setValue(articleToSave.source, forKey: "source")
-        article.setValue(articleToSave.url, forKey: "urlPath")
+        article.setValue(articleToSave.url, forKey: "url")
         article.setValue(articleToSave.isSaved, forKey: "isSaved")
         
         do {
@@ -47,6 +47,7 @@ final class ArticlesDatabaseManager {
     
     func fetchNewsFromCoreData(entityName: String) -> [CellDataModel]? {
         
+        print("start fetch from coreData")
         guard let managedContext = managedContext else { return nil}
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
