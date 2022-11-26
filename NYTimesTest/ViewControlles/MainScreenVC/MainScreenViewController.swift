@@ -11,13 +11,25 @@ final class MainScreenViewController: UIViewController {
     private var newsTableView: UITableView!
     
     private let vm = MainScreenViewModel()
+    private var pushSavedArticlesScreen: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupTableView()
         setupCallbacks()
-        vm.sendRequest()
+        vm.sendMultiplyRequest()
+    }
+    
+    private func setupNavigationBar() {
+        self.navigationController?.view.tintColor = UIColor.orange
+        self.navigationItem.title = "News"
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Saved",
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(savedButtonTapped))
     }
     
     private func setupTableView() {
@@ -25,6 +37,7 @@ final class MainScreenViewController: UIViewController {
         newsTableView.delegate = self
         newsTableView.dataSource = self
         newsTableView.backgroundColor = .red
+        newsTableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "cell")
         
         view.addSubview(newsTableView)
         newsTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +56,10 @@ final class MainScreenViewController: UIViewController {
     @objc private func openSection(button: UIButton) {
         let section = button.tag
         vm.onSectionTap(section: section)
-        print(section)
+    }
+    
+    @objc private func savedButtonTapped() {
+        pushSavedArticlesScreen?()
     }
 }
 
@@ -63,7 +79,9 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let button = UIButton()
-        button.setTitle("Tap here", for: .normal)
+        
+        let title = vm.sectionsData[section].title
+        button.setTitle(title, for: .normal)
         button.tag = section
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(self.openSection), for: .touchUpInside)
@@ -75,7 +93,17 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? NewsTableViewCell else { return UITableViewCell()}
+        
+        let cellData = vm.sectionsData[indexPath.section].data[indexPath.row]
+        cell.setData(data: cellData) {
+            [weak self] cell in
+            guard let indexPath = tableView.indexPath(for: cell) else { return }
+            self?.vm.onFavoriteButtonTapped(at: indexPath)
+        }
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
