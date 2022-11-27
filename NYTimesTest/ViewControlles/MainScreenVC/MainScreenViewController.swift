@@ -8,9 +8,8 @@
 import UIKit
 
 final class MainScreenViewController: UIViewController {
+    
     private var newsTableView: UITableView!
-    private let vm = MainScreenViewModel()
-    private var activityView: UIActivityIndicatorView?
     private let refresher: UIRefreshControl = {
             let refreshControll = UIRefreshControl()
             refreshControll.tintColor = .systemOrange
@@ -20,16 +19,16 @@ final class MainScreenViewController: UIViewController {
             return refreshControll
         }()
     
+    private let vm = MainScreenViewModel()
     var pushSavedArticlesScreen: (() -> Void)?
     
+    //Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         setupTableView()
         setupCallbacks()
-        setupActivityIndicator()
-        activityView?.startAnimating()
         vm.sendMultiplyRequest()
     }
     
@@ -37,8 +36,10 @@ final class MainScreenViewController: UIViewController {
         vm.syncCoreDataWithCurrentNews()
     }
     
+    //Functions
     private func setupNavigationBar() {
         self.navigationController?.view.tintColor = UIColor.orange
+        self.navigationController?.view.backgroundColor = .darkGray
         self.navigationItem.title = "News"
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Saved",
@@ -52,7 +53,6 @@ final class MainScreenViewController: UIViewController {
         newsTableView.delegate = self
         newsTableView.dataSource = self
         newsTableView.refreshControl = refresher
-        newsTableView.backgroundColor = .red
         newsTableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "cell")
         
         view.addSubview(newsTableView)
@@ -63,19 +63,9 @@ final class MainScreenViewController: UIViewController {
         newsTableView.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
     }
     
-    private func setupActivityIndicator() {
-            activityView = UIActivityIndicatorView(style: .large)
-            activityView?.center = self.view.center
-            activityView?.color = .systemOrange
-            if let activityView = activityView {
-                self.view.addSubview(activityView)
-            }
-        }
-    
     private func setupCallbacks() {
         vm.onUpdate = { [weak self] in
             self?.newsTableView.reloadData()
-            self?.activityView?.stopAnimating()
             self?.newsTableView.refreshControl?.endRefreshing()
         }
     }
@@ -93,7 +83,7 @@ final class MainScreenViewController: UIViewController {
             vm.sendMultiplyRequest()
         }
 }
-
+//MARK: UITableViewDelegate, UITableViewDataSource
 extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionsData = vm.sectionsData
@@ -112,9 +102,11 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource {
         let button = UIButton()
         
         let title = vm.sectionsData[section].title
-        button.setTitle(title, for: .normal)
+        button.setTitle("Most " + title, for: .normal)
         button.tag = section
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.lightText, for: .normal)
+        button.backgroundColor = .darkGray
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(self.openSection), for: .touchUpInside)
         return button
     }

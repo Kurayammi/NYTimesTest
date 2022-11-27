@@ -16,7 +16,7 @@ struct CellDataModel {
     var abstract: String
     var isSaved = false
     
-    init(responceData: NewsResponceModel) {
+    init(responceData: DataResponceModel) {
         self.url = responceData.url
         self.source = responceData.source
         self.section = responceData.section

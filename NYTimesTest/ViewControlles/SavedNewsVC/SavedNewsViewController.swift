@@ -11,18 +11,24 @@ class SavedNewsViewController: UIViewController {
     private var newsTableView: UITableView!
     private let vm = SavedNewsViewModel()
     
+    //Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         setupCallbacks()
         setupTableView()
         vm.fetchFromCoreData()
+    }
+    
+    //Functions
+    private func setupNavigationBar() {
+        self.navigationItem.title = "Saved News"
     }
     
     private func setupTableView() {
         newsTableView = UITableView()
         newsTableView.delegate = self
         newsTableView.dataSource = self
-        newsTableView.backgroundColor = .red
         newsTableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "cell")
         
         view.addSubview(newsTableView)
@@ -44,7 +50,7 @@ class SavedNewsViewController: UIViewController {
         vm.onSectionTap(section: section)
     }
 }
-
+//MARK: UITableViewDelegate, UITableViewDataSource
 extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionsData = vm.sectionsData
@@ -63,9 +69,11 @@ extension SavedNewsViewController: UITableViewDelegate, UITableViewDataSource {
         let button = UIButton()
         
         let title = vm.sectionsData[section].title
-        button.setTitle(title, for: .normal)
+        button.setTitle("Most " + title, for: .normal)
         button.tag = section
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.lightText, for: .normal)
+        button.backgroundColor = .darkGray
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(self.openSection), for: .touchUpInside)
         return button
     }

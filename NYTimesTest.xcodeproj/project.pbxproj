@@ -15,6 +15,7 @@
 		406E334E29329C4C008F70F8 /* MainScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E334D29329C4C008F70F8 /* MainScreenModels.swift */; };
 		406E335129329E36008F70F8 /* SavedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E335029329E36008F70F8 /* SavedNewsViewController.swift */; };
 		406E335329329EEB008F70F8 /* SavedNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406E335229329EEB008F70F8 /* SavedNewsViewModel.swift */; };
+		408233162933C3DF00C3404D /* NewsResponceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408233152933C3DF00C3404D /* NewsResponceModel.swift */; };
 		40C859B0292FC405006A1AB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859AF292FC405006A1AB2 /* AppDelegate.swift */; };
 		40C859B2292FC405006A1AB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C859B1292FC405006A1AB2 /* SceneDelegate.swift */; };
 		40C859BA292FC405006A1AB2 /* NYTimesTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40C859B8292FC405006A1AB2 /* NYTimesTest.xcdatamodeld */; };
@@ -35,6 +36,7 @@
 		406E334D29329C4C008F70F8 /* MainScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModels.swift; sourceTree = "<group>"; };
 		406E335029329E36008F70F8 /* SavedNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsViewController.swift; sourceTree = "<group>"; };
 		406E335229329EEB008F70F8 /* SavedNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedNewsViewModel.swift; sourceTree = "<group>"; };
+		408233152933C3DF00C3404D /* NewsResponceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponceModel.swift; sourceTree = "<group>"; };
 		40C859AC292FC405006A1AB2 /* NYTimesTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NYTimesTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40C859AF292FC405006A1AB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40C859B1292FC405006A1AB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				403BA3932932676200443769 /* NetworkManager.swift */,
+				408233152933C3DF00C3404D /* NewsResponceModel.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -90,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				403BA39529327ED900443769 /* NewsLocalStorageManager.swift */,
+				40C859B8292FC405006A1AB2 /* NYTimesTest.xcdatamodeld */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -132,9 +136,6 @@
 				403BA391293266EE00443769 /* Networking */,
 				40C859CC292FC9E9006A1AB2 /* Resources */,
 				40C859C0292FC409006A1AB2 /* Info.plist */,
-				40C859BB292FC409006A1AB2 /* Assets.xcassets */,
-				40C859BD292FC409006A1AB2 /* LaunchScreen.storyboard */,
-				40C859B8292FC405006A1AB2 /* NYTimesTest.xcdatamodeld */,
 			);
 			path = NYTimesTest;
 			sourceTree = "<group>";
@@ -163,6 +164,8 @@
 		40C859CC292FC9E9006A1AB2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				40C859BD292FC409006A1AB2 /* LaunchScreen.storyboard */,
+				40C859BB292FC409006A1AB2 /* Assets.xcassets */,
 				40C859CD292FCA00006A1AB2 /* UserConstants.swift */,
 			);
 			path = Resources;
@@ -305,6 +308,7 @@
 				40C859BA292FC405006A1AB2 /* NYTimesTest.xcdatamodeld in Sources */,
 				406E335129329E36008F70F8 /* SavedNewsViewController.swift in Sources */,
 				4022650A29313C580014145D /* DetailsScreenViewController.swift in Sources */,
+				408233162933C3DF00C3404D /* NewsResponceModel.swift in Sources */,
 				40C859CE292FCA00006A1AB2 /* UserConstants.swift in Sources */,
 				40C859B0292FC405006A1AB2 /* AppDelegate.swift in Sources */,
 				403BA39629327ED900443769 /* NewsLocalStorageManager.swift in Sources */,

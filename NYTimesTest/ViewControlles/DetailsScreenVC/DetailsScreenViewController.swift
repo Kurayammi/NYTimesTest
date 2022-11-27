@@ -10,18 +10,20 @@ import WebKit
 
 #warning("When open webView bug: This method should not be called on the main thread as it may lead to UI unresponsiveness. This bug new in iOS 16 from apple")
 
-class DetailsScreenViewController: UIViewController, WKUIDelegate {
+final class DetailsScreenViewController: UIViewController, WKUIDelegate {
     
     private var webVeiewContent: WKWebView!
     var url: URL?
     
+    //Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWebView()
         start()
     }
     
-    func start() {
+    //Functions
+    private func start() {
         if let url = url {
             let request = URLRequest(url: url)
             webVeiewContent.load(request)

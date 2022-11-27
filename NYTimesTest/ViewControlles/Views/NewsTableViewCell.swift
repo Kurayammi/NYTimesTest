@@ -28,6 +28,15 @@ final class NewsTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.clipsToBounds = true
+        contentView.layer.cornerRadius = 10
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.black.cgColor
+        contentView.backgroundColor = .darkGray
+    }
+    
     func setData(data: CellDataModel,
                  buttonHandler: ((NewsTableViewCell) -> Void)? ) {
         titleLabel.text = data.title

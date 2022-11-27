@@ -11,10 +11,10 @@ final class SavedNewsViewModel {
     var sectionsData: [SectionModel] = []
     var onUpdate:(() -> Void)?
     
-    private let coreDataManager = NewsLocalStorageManager()
-    
     func fetchFromCoreData() {
+        let coreDataManager = NewsLocalStorageManager()
         sectionsData = []
+        
         guard let emailed = coreDataManager.fetchNewsFromCoreData(entityName: "Emailed") else { return }
         guard let shared = coreDataManager.fetchNewsFromCoreData(entityName: "Shared") else { return }
         guard let viewed = coreDataManager.fetchNewsFromCoreData(entityName: "Viewed") else { return }
@@ -37,6 +37,7 @@ final class SavedNewsViewModel {
         let sectionTitle = sectionsData[indexPath.section].title
         let articleTitle = sectionsData[indexPath.section].data[indexPath.row].title
         
+        let coreDataManager = NewsLocalStorageManager()
         coreDataManager.deleteNewFromCoreDataEntity(title: articleTitle, entityName: sectionTitle)
         fetchFromCoreData()
     }

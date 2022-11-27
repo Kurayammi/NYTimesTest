@@ -6,35 +6,19 @@
 //
 
 import Foundation
-import Alamofire
-
-struct MainScreenModel: Decodable {
-    var num_results: Int
-    var results: [NewsResponceModel]
-}
-
-struct NewsResponceModel: Decodable {
-    var url: URL
-    var source: String
-    var section: String
-    var published_date: String
-    var title: String
-    var abstract: String
-}
 
 final class MainScreenViewModel {
     
     var sectionsData: [SectionModel] = []
-    
     var onUpdate:(() -> Void)?
     
-    private let nm = NetworkManager()
-    
     func sendMultiplyRequest() {
+        let nm = NetworkManager()
+        
         nm.fetch([UserConstants.emailedUrlPath,
                   UserConstants.sharedUrlPath,
                   UserConstants.viewedUrlPath],
-                 of: MainScreenModel.self) { [weak self] items in
+                 of: NewsResponceModel.self) { [weak self] items in
             
             self?.sectionsData = []
             
@@ -65,7 +49,12 @@ final class MainScreenViewModel {
         let sectionTitle = sectionsData[indexPath.section].title
         let article = sectionsData[indexPath.section].data[indexPath.row]
         
-        dbManager.saveNewToCoreDataEntity(articleToSave: article, entityName: sectionTitle)
+        if sectionsData[indexPath.section].data[indexPath.row].isSaved {
+            dbManager.saveNewToCoreDataEntity(articleToSave: article, entityName: sectionTitle)
+        } else {
+            dbManager.deleteNewFromCoreDataEntity(title: article.title, entityName: sectionTitle)
+        }
+        
         onUpdate?()
     }
     
